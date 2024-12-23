@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="GiftinTech">
+    <meta name="description" content="My first rock, paper, scissors game.">
+    <title>GiftinTech - Rock, Paper, Scissors Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/Awase's Logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <section class="home-section">
+        <h1>Do you want to play a Rock, Paper, and Scissors Game?</h1>
+        <button  type="button" id="exit-btn" class="play-btn header-btn">PLAY</button>
+        <button type="button" class="exit-btn header-btn">EXIT</button>
+
+        <dialog class="message-dialog">
+            <h1>Okay, maybe next time.</h1>
+            <p>
+                <button class="close-modal" autofocus>Close</button>
+            </p>
+        </dialog>
+
+        <dialog class="player-input-dialog">
+            <h1>Enter player name:</h1>
+            <p>
+                <input type="text" name="player-name" id="player-name" class="player-input" placeholder="Enter your name, e.g., Gifty">
+            </p>
+                <button  type="button" class="second-play-btn player-name-btn">NEXT</button>
+                <button type="button" class="second-exit-btn player-name-btn">EXIT</button>
+       
+        </dialog>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>

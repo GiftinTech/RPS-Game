@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* COLOR */
+    --BGCOLOR: #12142D;
+    --FC: #fff;
+    --BTNCOLOR: #2BD17E;
+    --ERRCOLOR: #EB5757;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--BGCOLOR);
+    color: var(--FC);
+    text-align: center;
+}
+
+.home-section {
+    padding: 220px 10px;
+}
+
+.home-section h1 {
+    font-size: 34px;
+    line-height: 50px;
+    margin-bottom: 30px;
+}
+
+button {
+    font-family: 'Inter', sans-serif;
+    color: var(--FC);
+    font-weight: bold;
+}
+
+.header-btn {
+    font-size: 22px;
+    filter: saturate(150%);
+    border-radius: 30px;
+    width: 200px;
+    height: 60px;
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+.play-btn, .second-play-btn {
+    border: 2px solid var(--BTNCOLOR);
+    background-color: var(--BTNCOLOR);
+}
+
+.exit-btn, .second-exit-btn {
+    border: 2px solid var(--ERRCOLOR);
+    background-color: var(--ERRCOLOR);
+}
+
+.message-dialog, .player-input-dialog {
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--BGCOLOR);
+    box-shadow: 0 0 100px 10px rgba(255, 255, 255, 0.1);
+    opacity: 0.98;
+}
+
+.message-dialog h1, .player-input-dialog h1 {
+    font-size: 34px;
+    text-align: center;
+    padding-top: 50px;
+    color: var(--FC);
+}
+
+.message-dialog::backdrop, .player-input-dialog::backdrop {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+.close-modal {
+    font-size: 16px;
+    width: 150px;
+    height: 50px;
+    padding: 10px 15px;
+    color: var(--FC);
+    background-color: var(--BTNCOLOR);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.1);
+}
+
+.play-section h1 {
+    padding: 0 10px;
+    padding-top: 200px;
+    padding-bottom: 20px;
+}
+
+nav {
+    text-align: left;
+    padding: 0 80px;
+    padding-top: 50px;
+}
+
+li {
+    list-style-type: none;
+}
+
+li a {
+    color: var(--FC);
+}
+
+.play-section h1 {
+    font-size: 34px;
+}
+
+.player-input {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 10px;
+    width: 300px;
+    height: 60px;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+}
+
+.player-name-btn {
+    font-size: 16px;
+    filter: saturate(150%);
+    border-radius: 8px;
+    width: 100px;
+    height: 40px;
+    padding: 5px 10px;
+    margin: 0 2px;
+}
+
+.start-game-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.RPS-lists {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    border: 1px solid var(--FC);
+    border-radius: 10px;
+    width: 30%;
+    margin: 30px auto 0;
+    padding: 10px 15px;
+}
+
+.RPS-nav {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: -45px;
+}
+
+.RPS-nav li {
+    margin-left: -80px;
+}
+
+.score-title {
+    color: #000;
+    font-size: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--FC);
+    width: 85px;
+    height: 65px;
+    padding: 5px 0 10px;
+}
+
+.score-value {
+    font-size: 38px;
+    font-weight: bolder;
+}
+
+.start-game-section h1 {
+    margin-top: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.exit-game-btn {
+    font-size: 10px;
+    font-weight: 300;
+    height: 16px;
+    border: 1px solid var(--ERRCOLOR);
+    border-radius: 3px;
+    background-color: transparent;
+    padding: 0 2px;
+    position: absolute;
+    top: 35px;
+    left: 90%;
+}
+
+/* .triangle-shape {
+    width: 0;
+    height: 0;
+    margin: 50px auto 0;
+    transform: rotate(180deg);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 200px solid gray;
+} */
+
+path {
+    fill: #1a1919;
+}
+
+.svg-img {
+    border-radius: 100%;
+    background-color: var(--FC);
+    
+}
+
+.top-row {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 50px 30px;
+}
+
+.svg-img:nth-child(1) {
+    padding: 12px 10px 0 15px;
+    box-shadow: 0 0 200px 10px var(--BTNCOLOR);
+    border: 10px solid var(--BTNCOLOR);
+}
+
+.svg-img:nth-child(2) {
+    padding: 12px 10px 0 12px;
+    box-shadow: 0 0 200px 10px  #0707c5f6;
+    border: 10px solid #0707c5f6;
+}
+
+.svg-img:nth-child(3) {
+   display: block;
+   margin: 0 auto;
+   padding: 18px 10px 0 15px;
+   box-shadow: 0 0 200px 10px var(--ERRCOLOR);
+   border: 10px solid var(--ERRCOLOR);
+   filter: saturate(200%);
+}
+
+.start-rules-el-btn, .rules-el-btn, .reset-el-btn {
+    background-color: var(--BGCOLOR);
+    font-family: 'Inter', sans-serif;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid var(--FC);
+    border-radius: 5px;
+    color: var(--FC);
+}
+
+.start-rules-el-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+}
+
+.rules-el-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 220px;
+}
+
+.reset-el-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+}

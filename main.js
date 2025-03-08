@@ -110,7 +110,7 @@ if (thirdDialog) {
 const initGame = () => {
     if (nextBtn) {
         nextBtn.addEventListener("click", () => {
-            const playerName = playerNameInput ? playerNameInput.value || 'Player' : 'Player';
+            const playerName = playerNameInput ? playerNameInput.value.trim() || 'Player' : 'Player';
             localStorage.setItem('playerName', playerName);
             location.href = 'start-game.html';
         });

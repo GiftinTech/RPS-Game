@@ -64,7 +64,7 @@ button {
     background-color: var(--ERRCOLOR);
 }
 
-.message-dialog, .player-input-dialog {
+.message-dialog, .player-input-dialog, .play-again, .thanks-message-dialog {
     margin: auto;
     width: 500px;
     height: 300px;
@@ -75,11 +75,31 @@ button {
     opacity: 0.98;
 }
 
-.message-dialog h1, .player-input-dialog h1 {
+.play-again {
+    width: 30%;
+    height: 25%;
+}
+
+.message-dialog h1, .player-input-dialog h1, .play-again h2 {
     font-size: 34px;
     text-align: center;
     padding-top: 50px;
     color: var(--FC);
+}
+
+.play-again h2 {
+    padding-top: 20px;
+}
+
+.play-again button {
+    width: 35%;
+    border: 2px solid white;
+    background-color: var(--BGCOLOR);
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 0.8rem;
+    font-size: 1rem;
 }
 
 .message-dialog::backdrop, .player-input-dialog::backdrop {
@@ -103,20 +123,6 @@ button {
     padding: 0 10px;
     padding-top: 200px;
     padding-bottom: 20px;
-}
-
-nav {
-    text-align: left;
-    padding: 0 80px;
-    padding-top: 50px;
-}
-
-li {
-    list-style-type: none;
-}
-
-li a {
-    color: var(--FC);
 }
 
 .play-section h1 {
@@ -168,10 +174,14 @@ li a {
     font-weight: 600;
     line-height: 1;
     margin-top: -45px;
+    text-align: left;
+    padding: 0 80px;
+    padding-top: 50px;
 }
 
 .RPS-nav li {
     margin-left: -80px;
+    list-style-type: none;
 }
 
 .score-title {
@@ -190,7 +200,7 @@ li a {
     font-weight: bolder;
 }
 
-.start-game-section h1 {
+.wlcm-msg, .final-round-msg {
     margin-top: 50px;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -223,17 +233,20 @@ path {
     fill: #1a1919;
 }
 
+.svg-container {
+    margin-top: 2rem;
+    width: 50vw;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 8rem;
+}
+
 .svg-img {
     border-radius: 100%;
     background-color: var(--FC);
     
-}
-
-.top-row {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 50px 30px;
 }
 
 .svg-img:nth-child(1) {
@@ -249,8 +262,6 @@ path {
 }
 
 .svg-img:nth-child(3) {
-   display: block;
-   margin: 0 auto;
    padding: 18px 10px 0 15px;
    box-shadow: 0 0 200px 10px var(--ERRCOLOR);
    border: 10px solid var(--ERRCOLOR);
@@ -271,7 +282,7 @@ path {
 .start-rules-el-btn {
     position: fixed;
     bottom: 20px;
-    right: 100px;
+    right: 220px;
 }
 
 .rules-el-btn {
@@ -280,8 +291,82 @@ path {
     right: 220px;
 }
 
+.rules-dialog {
+    margin: 50px auto;
+    width: 70vw;
+    height: 80vh;
+    padding: 20px 10px 0;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--BGCOLOR);
+    box-shadow: 0 0 100px 10px rgba(255, 255, 255, 0.1);
+    color: var(--FC);
+    font-family: 'Inter', sans-serif;
+}
+
+.rules-dialog h2{
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+} 
+
+.rules-nav ul {
+    text-align: justify;
+    font-size: 22px;
+    list-style: disc;
+    margin-left: 50px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+
+.rules-nav ul ul {
+    padding: 10px 5px;
+    list-style: circle; 
+    margin-left: 50px; 
+}
+
+.rules-nav li {
+    padding-bottom: 10px;
+}
+
+/* .rules-dialog[scroll] {
+    overflow-y: hidden;
+} */
+
+.rules-bold {
+    font-weight: 600;
+}
+
+.rules-thin {
+    font-weight: 300;
+}
+
 .reset-el-btn {
     position: fixed;
     bottom: 20px;
     right: 100px;
+}
+
+.final-round-section .svg-container {
+    margin: 2rem auto 0;
+}
+
+.final-round-section .svg-container svg {
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+}
+
+.winner-text {
+    position: relative;
+    font-size: 1.3rem;
+    top: 6rem;
+    left: 0.8rem;
+    font-weight: bolder;
+    color: rgb(100, 240, 100);
+}
+
+.players-choice {
+    font-size: 1.1rem;
+    line-height: 30px;
+    letter-spacing: 1.5px;
 }

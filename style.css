@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 *, *::before, *::after {
     margin: 0;
@@ -8,98 +8,72 @@
 
 :root {
     /* COLOR */
-    --BGCOLOR: #12142D;
+    --BGCOLOR: radial-gradient(circle at top, hsl(214deg, 47%, 23%), hsl(237deg, 49%, 15%));
     --FC: #fff;
     --BTNCOLOR: #2BD17E;
     --ERRCOLOR: #EB5757;
+    --FONT-FAMILY: "Barlow", sans-serif;
+    --HEADER-OUTLINE: hsl(217, 16%, 45%);;
 }
 
-html {
+html, body {
     scroll-behavior: smooth;
-    overflow: hidden;
+    overflow-x: hidden;
+    height: 100%;
 }
 
 body {
-    font-family: 'Space Grotesk', sans-serif;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--BGCOLOR);
+    font-family: var(--FONT-FAMILY);
+    background: var(--BGCOLOR);
     color: var(--FC);
     text-align: center;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    padding: 100px 3rem 0;
 }
 
 .home-section {
-    padding: 220px 10px;
+    padding: 8rem 1.4rem 1rem;
 }
 
 .home-section h1 {
-    font-size: 34px;
-    line-height: 50px;
+    font-size: 1.4rem;
     margin-bottom: 30px;
 }
 
 button {
-    font-family: 'Inter', sans-serif;
     color: var(--FC);
-    font-weight: bold;
-}
-
-.header-btn {
-    font-size: 22px;
-    filter: saturate(150%);
-    border-radius: 30px;
-    width: 200px;
-    height: 60px;
-    padding: 10px 20px;
     margin: 0 5px;
-}
-
-.play-btn, .second-play-btn {
-    border: 2px solid var(--BTNCOLOR);
-    background-color: var(--BTNCOLOR);
-}
-
-.exit-btn, .second-exit-btn {
-    border: 2px solid var(--ERRCOLOR);
-    background-color: var(--ERRCOLOR);
-}
-
-.message-dialog, .player-input-dialog, .play-again, .thanks-message-dialog {
-    margin: auto;
-    width: 500px;
-    height: 300px;
-    border: none;
-    border-radius: 30px;
+    padding: .5rem 1.5rem;
+    border: 2px solid var(--HEADER-OUTLINE);
+    font-size: .75rem;
+    line-height: 1.125rem;
+    border-radius: .5rem;
+    letter-spacing: 2px;
     background-color: var(--BGCOLOR);
-    box-shadow: 0 0 100px 10px rgba(255, 255, 255, 0.1);
+    transition: all .15s ease-in-out;
+}
+
+.message-dialog, .player-input-dialog, .thanks-message-dialog {
+    margin: auto 1rem;
+    width: 90%;
+    max-width: 400px;
+    height: 300px;
+    border: 2px solid var(--HEADER-OUTLINE);
+    border-radius: 10px;
+    background: var(--BGCOLOR);
+    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.1);
     opacity: 0.98;
 }
 
-.play-again {
-    width: 30%;
-    height: 25%;
+.message-dialog {
+    padding-top: 3rem;
 }
 
-.message-dialog h1, .player-input-dialog h1, .play-again h2 {
-    font-size: 34px;
+.message-dialog h1, .player-input-dialog h1, .thanks-message-dialog h1 {
+    font-size: 1.5rem;
     text-align: center;
     padding-top: 50px;
     color: var(--FC);
-}
-
-.play-again h2 {
-    padding-top: 20px;
-}
-
-.play-again button {
-    width: 35%;
-    border: 2px solid white;
-    background-color: var(--BGCOLOR);
-    margin-top: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
-    padding: 0.8rem;
-    font-size: 1rem;
 }
 
 .message-dialog::backdrop, .player-input-dialog::backdrop {
@@ -107,46 +81,44 @@ button {
     backdrop-filter: blur(2px);
 }
 
-.close-modal {
-    font-size: 16px;
-    width: 150px;
+.player-input-dialog input {
+    width: 95%;
     height: 50px;
-    padding: 10px 15px;
-    color: var(--FC);
-    background-color: var(--BTNCOLOR);
+    font-family: 'Inter', sans-serif;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    margin-bottom: 20px;
 }
 
 .play-section h1 {
     padding: 0 10px;
     padding-top: 200px;
     padding-bottom: 20px;
-}
-
-.play-section h1 {
     font-size: 34px;
 }
 
-.player-input {
-    font-family: 'Inter', sans-serif;
-    border: none;
-    border-radius: 10px;
-    width: 300px;
-    height: 60px;
-    padding: 5px 15px;
-    margin-bottom: 20px;
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.6rem;
+    transform: translateY(200px);
+    border-top: 1px solid var(--HEADER-OUTLINE);
+    padding-top: 10px;
+    color: var(--HEADER-OUTLINE);
 }
 
-.player-name-btn {
-    font-size: 16px;
-    filter: saturate(150%);
-    border-radius: 8px;
-    width: 100px;
-    height: 40px;
-    padding: 5px 10px;
-    margin: 0 2px;
+footer a {
+    color: var(--FC);
+    text-underline-offset: 2.5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+footer a:is(:hover, :focus) {
+    color: var(--BTNCOLOR);
 }
 
 .start-game-section {
@@ -160,17 +132,19 @@ button {
 
 .RPS-lists {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     margin-top: 50px;
-    border: 1px solid var(--FC);
-    border-radius: 10px;
-    width: 30%;
-    margin: 30px auto 0;
-    padding: 10px 15px;
+    border: 3px solid var(--HEADER-OUTLINE);
+    border-radius: 7px;
+    max-width: 90%;
+    height: 100px;
+    margin: 10px 0 0;
+    padding: 10px;
 }
 
 .RPS-nav {
-    font-size: 18px;
+    font-size: 0.75rem;
     font-weight: 600;
     line-height: 1;
     margin-top: -45px;
@@ -185,153 +159,147 @@ button {
 }
 
 .score-title {
-    color: #000;
+    color: #2a46c0;
     font-size: 10px;
     border: none;
-    border-radius: 8px;
-    background-color: var(--FC);
-    width: 85px;
-    height: 65px;
-    padding: 5px 0 10px;
+    border-radius: 3px;
+    width: 100px;
+    height: 70px;
+    padding: 0.5rem 0.2rem;
+    background-color: hsl(0deg, 0%, 100%);;
+    box-shadow: 0 3px 6px #00000026;
 }
 
-.score-value {
-    font-size: 38px;
+.score-value, .player-score-value, .computer-score-value, .ties-score-value {
+    font-size: 2.5rem;
     font-weight: bolder;
+    color: #3b4363;;
 }
 
 .wlcm-msg, .final-round-msg {
-    margin-top: 50px;
+    margin-top: 5px;
+    padding-top: 5px;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 0.65rem;
 }
-
-.exit-game-btn {
-    font-size: 10px;
-    font-weight: 300;
-    height: 16px;
-    border: 1px solid var(--ERRCOLOR);
-    border-radius: 3px;
-    background-color: transparent;
-    padding: 0 2px;
-    position: absolute;
-    top: 35px;
-    left: 90%;
-}
-
-/* .triangle-shape {
-    width: 0;
-    height: 0;
-    margin: 50px auto 0;
-    transform: rotate(180deg);
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 200px solid gray;
-} */
 
 path {
-    fill: #1a1919;
+    fill: var(--BGCOLOR);
 }
 
 .svg-container {
-    margin-top: 2rem;
-    width: 50vw;
+    margin-top: 1rem;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
-    gap: 8rem;
+    gap: 2rem;
 }
 
+/* .svg-container::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transform: rotate(180deg);
+    margin-top: 2rem;
+    width: 50%;
+    height: 40%;
+    border: 10px solid gray;
+    border-style: groove;
+}
+ */
 .svg-img {
     border-radius: 100%;
     background-color: var(--FC);
-    
+    cursor: pointer;
 }
 
 .svg-img:nth-child(1) {
     padding: 12px 10px 0 15px;
-    box-shadow: 0 0 200px 10px var(--BTNCOLOR);
+    box-shadow: 0 0 200px 20px var(--BTNCOLOR);
     border: 10px solid var(--BTNCOLOR);
 }
 
 .svg-img:nth-child(2) {
     padding: 12px 10px 0 12px;
-    box-shadow: 0 0 200px 10px  #0707c5f6;
+    box-shadow: 0 0 200px 20px  #0707c5f6;
     border: 10px solid #0707c5f6;
 }
 
 .svg-img:nth-child(3) {
    padding: 18px 10px 0 15px;
-   box-shadow: 0 0 200px 10px var(--ERRCOLOR);
+   box-shadow: 0 0 200px 20px var(--ERRCOLOR);
    border: 10px solid var(--ERRCOLOR);
    filter: saturate(200%);
 }
 
-.start-rules-el-btn, .rules-el-btn, .reset-el-btn {
+.start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
     background-color: var(--BGCOLOR);
-    font-family: 'Inter', sans-serif;
     padding: 5px 10px;
     font-size: 12px;
     font-weight: bold;
     border: 1px solid var(--FC);
     border-radius: 5px;
     color: var(--FC);
-}
-
-.start-rules-el-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 220px;
-}
-
-.rules-el-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 220px;
+    cursor: pointer;
 }
 
 .rules-dialog {
     margin: 50px auto;
-    width: 70vw;
-    height: 80vh;
-    padding: 20px 10px 0;
+    width: 80%;
+    height: auto;
+    padding: 20px 10px 0 25px;
     border: none;
     border-radius: 30px;
-    background-color: var(--BGCOLOR);
+    background: var(--BGCOLOR);
     box-shadow: 0 0 100px 10px rgba(255, 255, 255, 0.1);
     color: var(--FC);
     font-family: 'Inter', sans-serif;
+    box-shadow: 0 0 50px 10px rgba(255, 255, 255, 0.1);
+    opacity: 0.98;
+}
+
+.rules-dialog::backdrop {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+.rules-dialog::after {
+    content: 'close';
+    text-transform: uppercase;
+    font-size: 0.5rem;
+    border: 2px solid var(--HEADER-OUTLINE);
+    padding: 0.5rem;
 }
 
 .rules-dialog h2{
-    font-size: 26px;
+    font-size: 1rem;
     font-weight: 600;
     margin-bottom: 20px;
+    text-align: center;
 } 
 
 .rules-nav ul {
     text-align: justify;
-    font-size: 22px;
+    font-size: 0.8rem;
     list-style: disc;
-    margin-left: 50px;
-    margin-right: 30px;
     margin-bottom: 10px;
 }
 
 .rules-nav ul ul {
     padding: 10px 5px;
     list-style: circle; 
-    margin-left: 50px; 
+    margin-left: 15px; 
 }
 
 .rules-nav li {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
-/* .rules-dialog[scroll] {
+.rules-dialog[scroll] {
     overflow-y: hidden;
-} */
+}
 
 .rules-bold {
     font-weight: 600;
@@ -341,14 +309,39 @@ path {
     font-weight: 300;
 }
 
-.reset-el-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 100px;
+.rules-el button {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    font-weight: 800;
+    border: 2px solid var(--HEADER-OUTLINE);
+    padding: 0.8rem;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.exit-game-btn {
+    color: var(--ERRCOLOR);
+}
+
+.final-round-section .RPS-lists {
+    max-width: 100%;
+    padding-left: 5px;
+}
+
+.final-round-section .RPS-nav li {
+    font-size: 0.4rem;
+}
+
+.final-round-score-board {
+    display: flex;
+    width: 80%;
+    gap: 0.2rem;
+
+    margin-left: -98px;
 }
 
 .final-round-section .svg-container {
-    margin: 2rem auto 0;
+    margin: auto 0;
 }
 
 .final-round-section .svg-container svg {
@@ -357,16 +350,225 @@ path {
 }
 
 .winner-text {
-    position: relative;
-    font-size: 1.3rem;
-    top: 6rem;
-    left: 0.8rem;
+    display: block;
+    transform: translateY(300px);
+    text-transform: uppercase;
+    font-size: 1.6rem;
     font-weight: bolder;
-    color: rgb(100, 240, 100);
+    padding: 0 2rem;
 }
 
 .players-choice {
-    font-size: 1.1rem;
-    line-height: 30px;
+    font-size: 0.8rem;
     letter-spacing: 1.5px;
 }
+
+.play-again-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 10%;
+    padding: 1rem 0;
+    transform: translate(15%, 10px);
+    color: hsl(210deg, 8%, 31%);
+    background-color: hsl(0deg, 0%, 100%);
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    transition: all .15s ease-in-out;
+    outline: none;
+    margin: 130px 0 80px;
+}
+
+.final-round-section .rules-el button {
+    margin-bottom: 20px;
+}
+
+.final-round-section .rules-el button:first-child {
+    width: 30%;
+}
+.final-round-section .rules-el button:last-child {
+    width: 40%;
+}
+
+@media (min-width: 425px) {
+    .svg-container {
+        gap: 3rem;
+        margin: 2rem auto;
+    }
+
+    .final-round-score-board {
+        margin-left: -78px;
+    }
+
+    .final-round-section .svg-container {
+        gap: 1rem;
+        margin: 0.5rem auto;
+    }
+
+    .winner-text {
+        transform: translateY(200px);
+    }
+
+    .final-round-section .play-again-btn {
+        margin-bottom: 50px;
+    }
+
+    .final-round-section .rules-el button {
+        margin: 0 auto 20px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .home-section {
+        padding: 0;
+        margin: 200px auto 0;
+    }
+    
+    .home-section h1 {
+        font-size: 2rem;
+    }
+    
+    button {
+        padding: 0.8rem 3rem;
+        font-size: 1rem;
+    }
+    
+    .message-dialog, .player-input-dialog, .thanks-message-dialog {
+        margin: 200px auto;
+        width: 100%;
+        opacity: 1;
+    }
+    
+    .RPS-lists {
+        width: 60%;
+        gap: 9.5rem;
+    }
+    
+    .RPS-nav li {
+        margin-left: -70px;
+    }
+    
+    .score-title {
+        font-size: 0.7rem;
+    }
+
+    .score-value, .player-score-value, .computer-score-value, .ties-score-value {
+        font-size: 2.7rem;
+    }
+    
+    .wlcm-msg, .final-round-msg {
+        margin-top: 10px;
+        padding-top: 10px;
+        font-size: 1rem;
+    }
+    
+    .svg-container {
+        padding: 0 10rem;
+        gap: 6rem;
+    }
+    
+    .start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
+        margin-left: 200px;
+    }
+
+    .start-rules-el-btn {
+        transform: translateX(200px);
+    }
+    
+    .rules-dialog {
+        padding: 2rem 3rem;
+        opacity: 1;
+    }
+    
+    .rules-dialog::after {
+        font-weight: bold;
+        font-size: 0.7rem;
+        margin-left: 430px;
+        padding: 0.7rem 2rem;
+    }
+    
+    .rules-dialog h2 {
+        padding-top: 2rem;
+        font-size: 1.2rem;
+    } 
+    
+    .rules-nav ul {
+        font-size: 0.9rem;
+    }
+    
+    .rules-nav ul ul {
+        padding: 15px;
+    }
+    
+    .rules-nav li {
+        padding-bottom: 8px;
+    }
+    
+    .rules-el button {
+        font-size: 0.7rem;
+    }
+    
+    .final-round-section .RPS-lists {
+        margin: 1rem auto;
+        width: 80%;
+        height: auto;
+        padding: 1.3rem 0 1.3rem 10px;
+    }
+    
+    .final-round-section .RPS-nav li {
+        font-size: 0.6rem;
+    }
+    
+    .final-round-score-board {
+        display: flex;
+        width: 100%;
+        height: auto;
+        gap: 0.2rem;
+    
+        margin-left: -58px;
+    }
+
+    .final-round-section .svg-container {
+        padding: 3rem .5rem;
+        gap: 15rem;
+    }
+    
+    .final-round-section .svg-container svg {
+        width: 24%;
+        height: 24%;
+        margin-left: 2rem;
+        margin-right: 0.5rem;
+    }
+
+    .final-round-section .svg-img {
+        padding: 50px 0 0 50px; /* paper */
+    }
+
+    .winner-text {
+        font-size: 2.1rem;
+        transform: translate(10px, 130px);
+    }
+    
+    .play-again-btn {
+        width: 25%;
+        height: auto;
+        padding: 0.5rem 0;
+        transform: translate(100px, -240px);
+    }
+    
+    .final-round-section .rules-el button {
+        transform: translateX(250px);
+        margin: 0 5px 20px;
+    }
+    
+    .final-round-section .rules-el button:first-child {
+        width: 15%;
+    }
+    .final-round-section .rules-el button:last-child {
+        width: 10%;
+    }
+}
+
+/* Fixed the remaining media query */

@@ -16,11 +16,12 @@ const svgChoices = Array.from(document.querySelectorAll('.svg-container svg'));
 const rpsArr = ['paper', 'scissors', 'rock'];
 const playerScore = document.querySelector('.player-score-value')
 const computerScore = document.querySelector('.computer-score-value')
-const playAgainDialog = document.querySelector('.play-again')
-const yesPlayAgainBtn = document.querySelector('.play-again-btn')
-const dontPlayAgainBtn = document.querySelector('.exit-play-again-btn')
+const ties = document.querySelector('.ties-score-value')
 const thanksMessage = document.querySelector('.thanks-message-dialog')
-console.log()
+const thanksMessageCloseBtn = document.getElementById('second-close-modal')
+const playAgainBtn = document.querySelector('.play-again-btn')
+const totalScore = document.querySelector('.score-value')
+//console.log(thanksMessageCloseBtn)
 
 // Play button functionality
 if (playBtn && secondDialog) {
@@ -29,7 +30,7 @@ if (playBtn && secondDialog) {
     });
 }
 
-// Exit button functionality
+// Exit Game functionality
 if (exitBtn1 && dialog) {
     exitBtn1.addEventListener("click", () => dialog.showModal());
 }
@@ -37,6 +38,34 @@ if (exitBtn1 && dialog) {
 if (exitBtn2 && dialog) {
     exitBtn2.addEventListener("click", () => dialog.showModal());
 }
+
+function startGameExitBtn() {
+    localStorage.setItem("showExitMessage", "true"); // Set flag
+
+    location.href = "index.html"; // Navigate to index
+}
+
+document.addEventListener("DOMContentLoaded", () => {   
+    if (localStorage.getItem("showExitMessage") === "true" && dialog) {
+        dialog.showModal(); // Show modal
+        localStorage.removeItem("showExitMessage"); // Clear flag after showing
+    }
+});
+
+const exitGameBtn = () => exitGame()
+
+const exitGame = () => {
+    localStorage.setItem("showThanksMessage", "true"); // Set flag
+
+    location.href = "index.html"; // Navigate to index
+};
+
+document.addEventListener("DOMContentLoaded", () => {   
+    if (localStorage.getItem("showThanksMessage") === "true" && thanksMessage) {
+        thanksMessage.showModal(); // Show modal
+        localStorage.removeItem("showThanksMessage"); // Clear flag after showing
+    }
+});
 
 // gameRules dialog functionality
 if (rulesBtn && thirdDialog) {
@@ -58,6 +87,9 @@ if (secondRulesBtn && finalDialog) {
 // Close button functionality
 if (closeBtn && dialog) {
     closeBtn.addEventListener("click", () => dialog.close());
+}
+if (thanksMessageCloseBtn && thanksMessage) {
+    thanksMessageCloseBtn.addEventListener("click", () => thanksMessage.close());
 }
 
 // Dialog click outside functionality
@@ -144,7 +176,9 @@ if(svgChoices.length > 0) {
             const randomIndex = Math.floor(Math.random() * rpsArr.length);
             localStorage.setItem('computerMove', rpsArr[randomIndex])
 
-            // addScore('result');
+
+            // New round
+            localStorage.setItem("newRound", "true");
             
             //Navigate to finalRound page
             location.href = 'final-round.html'
@@ -156,6 +190,7 @@ if(svgChoices.length > 0) {
  document.addEventListener('DOMContentLoaded', () => {
     const playerMove = localStorage.getItem("playerMove");
     const computerMove = localStorage.getItem("computerMove");
+    const isNewRound = localStorage.getItem("newRound") === "true";
 
     if (svgChoices.length > 0) {
         svgChoices.forEach((svg, index) => {
@@ -167,17 +202,18 @@ if(svgChoices.length > 0) {
                 svg.style.display = "flex";
             } else {
                 // Hide unselected SVGs in final-round.html
-                if (move !== playerMove && move !== computerMove) {
+                if (!window.location.href.includes("start-game.html") && move !== playerMove && move !== computerMove) {
                     svg.style.display = "none";  
                 }
             }
         });
 
-    
-    if (playerMove && computerMove) {
-        evaluatePlayerChoice(); // Only run if the user has made a choice
+       // Only evaluate if it's a new round
+       if (window.location.href.includes("final-round.html") && playerMove && computerMove  && isNewRound) {
+                evaluatePlayerChoice();
+                localStorage.setItem("newRound", "false"); // Prevent auto-playing again
+        }
     }
-}
 
     // Disable selection in final round funtionality
     if (window.location.href.includes("start-game.html")) {
@@ -220,99 +256,104 @@ function displayResult(result) {
     return result
 }
 
-const askToPlayAgain = (result) => {
-    addScore(result)
-
-    if (playAgainDialog) {
-        playAgainDialog.showModal();
-
-        if (yesPlayAgainBtn) {
-            yesPlayAgainBtn.addEventListener('click', restartGame);
-        }
-
-        if (dontPlayAgainBtn) {
-            dontPlayAgainBtn.addEventListener('click', exitGame);
-        }
-    } 
-};
-
-// Restart game function
-const restartGame = () => {
-    location.href = 'start-game.html';
-};
-
-// Exit game function
-const exitGame = () => {
-    location.href = 'index.html';
-
-    // Show "Thanks for playing" modal
-/*     if (thanksMessage) {
-        thanksMessage.showModal()
-    } */
-};
-
-// Evaluate the player's choice
-const evaluatePlayerChoice = () => {
-        const playerChoice = getPlayerChoice();
-        const computerChoice = getComputerChoice();
-        const result = determineWinner(playerChoice, computerChoice);
-
-        displayResult(result);
-        addScore(result);
-        askToPlayAgain(result);
-       /*  if (askToPlayAgain()) {
-            continue;
-        } else {
-            thanksForPlaying();
-            break;
-        }  */
-};
-
-const score = {
+/* const score = {
     wins: 0,
-    losses: 0
-};
+    losses: 0,
+}; */
 
 // Set score functionality
-const setScore = (playerScore, computerScore) => {
+const setScore = (playerScore, computerScore, ties) => {
     localStorage.setItem('playerScore', playerScore);
     localStorage.setItem('computerScore', computerScore);
+    localStorage.setItem('ties', ties);
 
     updateScoreBoard()
 };
+
+// Update the score UI when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    updateScoreBoard();
+    if (window.location.href.includes("start-game.html")) {
+        totalScoreValue();
+    }
+});
+
+// Function to update the scoreboard UI
+function updateScoreBoard() {
+    const playerScoreValue = localStorage.getItem('playerScore') || 0;
+    const computerScoreValue = localStorage.getItem('computerScore') || 0;
+    const tiesScoreValue = localStorage.getItem('ties') || 0;
+    
+    if (playerScore) playerScore.textContent = playerScoreValue;
+    if (computerScore) computerScore.textContent = computerScoreValue;
+    if (ties) ties.textContent = tiesScoreValue;
+}
 
 // Add score functionality
 const addScore = (result) => {
     let playerScoreValue = Number(localStorage.getItem('playerScore')) || 0;
     let computerScoreValue = Number(localStorage.getItem('computerScore')) || 0;
+    let tiesScoreValue = Number(localStorage.getItem('ties')) || 0;
 
     if (result.includes('Tie game!')) {
-        return;
+        tiesScoreValue += 1;
     } else if (result.includes("wins!") && !result.includes("Computer wins!")) {
-        score.wins += 1;
         playerScoreValue += 1;
     } else if (result.includes("Computer wins!")) {
-        score.wins += 1;
         computerScoreValue += 1;
     }
 
-    setScore(playerScoreValue, computerScoreValue);
+    localStorage.setItem("playerScore", playerScoreValue);
+    localStorage.setItem("computerScore", computerScoreValue);
+    localStorage.setItem("ties", tiesScoreValue);
+
+    updateScoreBoard(); // Update UI immediately after score change
 };
 
-// Update score board UI functionality
-function updateScoreBoard() {
-    const playerScoreValue = localStorage.getItem('playerScore') || 0;
-    const computerScoreValue = localStorage.getItem('computerScore') || 0;
-    
-    if (playerScore) playerScore.textContent = playerScoreValue;
-    if (computerScore) computerScore.textContent = computerScoreValue;
+// Calculate total score 
+const totalScoreValue = () => {
+    const playerScoreValue = Number(localStorage.getItem('playerScore')) || 0;
+    const computerScoreValue = Number(localStorage.getItem('computerScore')) || 0;
+    const tiesScoreValue = Number(localStorage.getItem('ties')) || 0;
+
+    if (totalScore) {
+        totalScore.textContent = playerScoreValue + computerScoreValue + tiesScoreValue;
+    }
 }
+
+// Evaluate the player's choice
+const evaluatePlayerChoice = () => {
+    const playerChoice = getPlayerChoice();
+    const computerChoice = getComputerChoice();
+    const result = determineWinner(playerChoice, computerChoice);
+
+    displayResult(result);
+    addScore(result);
+    askToPlayAgain(result);
+   /*  if (askToPlayAgain()) {
+        continue;
+    } else {
+        thanksForPlaying();
+        break;
+    }  */
+};
 
 // Reset score 
 const resetScore = () => {
     localStorage.setItem('playerScore', 0);
     localStorage.setItem('computerScore', 0);
-    score.wins = 0;
-    score.losses = 0;
+    localStorage.setItem('ties', 0);
     updateScoreBoard();
 };
+
+// Ask to play again functionality
+const askToPlayAgain = () => {
+    playAgainBtn.addEventListener('click', () => restartGame())
+}
+
+// Restart game function
+const restartGame = () => location.href = 'start-game.html'
+
+if (window.location.href.includes("start-game.html")) {
+    totalScoreValue()
+}

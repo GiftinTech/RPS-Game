@@ -343,6 +343,11 @@ const resetScore = () => {
     localStorage.setItem('playerScore', 0);
     localStorage.setItem('computerScore', 0);
     localStorage.setItem('ties', 0);
+
+    if (totalScore) {
+        totalScore.textContent = 0
+    }
+
     updateScoreBoard();
 };
 

@@ -136,13 +136,18 @@ if (thirdDialog) {
             thirdDialog.close()
         }
     });
+
+    if (thirdDialog) {
+        const thirdDialogClose = document.querySelector('.third-dialog-btn')
+        thirdDialogClose.addEventListener('click', () => thirdDialog.close())
+    }
 }
 
 // initGame when clicking Next button functionality
 const initGame = () => {
     if (nextBtn) {
         nextBtn.addEventListener("click", () => {
-            const playerName = playerNameInput ? playerNameInput.value.trim() || 'Player' : 'Player';
+            const playerName = playerNameInput ? playerNameInput.value.toUpperCase().trim() || 'Player' : 'Player';
             localStorage.setItem('playerName', playerName);
             location.href = 'start-game.html';
         });
@@ -354,15 +359,39 @@ const evaluatePlayerChoice = () => {
 
 // Reset score 
 const resetScore = () => {
-    localStorage.setItem('playerScore', 0);
-    localStorage.setItem('computerScore', 0);
-    localStorage.setItem('ties', 0);
+    const resetScorePopup = document.querySelector('.reset-score-modal')
+    const yesConfirmReset = document.querySelector('.yes-reset')
+    const dontConfirmReset = document.querySelector('.dont-reset')
 
-    if (totalScore) {
-        totalScore.textContent = 0
+   
+    resetScorePopup.showModal();
+
+   // Define event handlers
+    function handleYesClick() {
+        localStorage.setItem("playerScore", 0);
+        localStorage.setItem("computerScore", 0);
+        localStorage.setItem("ties", 0);
+
+        if (totalScore) {
+            totalScore.textContent = 0
+        }
+    
+        updateScoreBoard();
+        resetScorePopup.close();
     }
 
-    updateScoreBoard();
+    function handleNoClick() {
+        resetScorePopup.close();
+    }
+
+ 
+    // Remove existing event listeners before adding new ones
+    yesConfirmReset.removeEventListener("click", handleYesClick);
+    dontConfirmReset.removeEventListener("click", handleNoClick);
+
+    // Add event listeners
+    yesConfirmReset.addEventListener("click", handleYesClick);
+    dontConfirmReset.addEventListener("click", handleNoClick);
 };
 
 // Ask to play again functionality

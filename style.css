@@ -53,7 +53,7 @@ button {
     transition: all .15s ease-in-out;
 }
 
-.message-dialog, .player-input-dialog, .thanks-message-dialog {
+.message-dialog, .player-input-dialog, .thanks-message-dialog, .reset-score-modal {
     margin: auto 1rem;
     width: 90%;
     max-width: 400px;
@@ -69,7 +69,7 @@ button {
     padding-top: 3rem;
 }
 
-.message-dialog h2, .player-input-dialog h2, .thanks-message-dialog h2 {
+.message-dialog h2, .player-input-dialog h2, .thanks-message-dialog h2, .reset-score-modal h2 {
     font-size: 1.5rem;
     text-align: center;
     padding-top: 100px;
@@ -224,7 +224,7 @@ path {
    filter: saturate(200%);
 }
 
-.start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
+.start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn, .reset-score-modal button {
     background-color: var(--BGCOLOR);
     padding: 5px 10px;
     font-size: 12px;
@@ -235,10 +235,20 @@ path {
     cursor: pointer;
 }
 
-.rules-dialog {
-    margin: 50px auto;
-    width: 80%;
+.reset-score-modal {
+    padding: 0 1rem;
+}
+
+.reset-score-modal button {
+    width: 30%;
     height: auto;
+    padding: .7rem;
+}
+
+.rules-dialog {
+    margin: 20px auto;
+    width: 90%;
+    height: 450px;
     padding: 20px 10px 0 25px;
     border: none;
     border-radius: 10px;
@@ -255,12 +265,10 @@ path {
     backdrop-filter: blur(2px);
 }
 
-.rules-dialog::after {
-    content: 'close';
-    text-transform: uppercase;
-    font-size: 0.5rem;
+.third-dialog-btn {
+    font-size: 0.7rem;
     border: 2px solid var(--HEADER-OUTLINE);
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .rules-dialog h2{
@@ -417,6 +425,12 @@ path {
     .svg-container {
         gap: 1rem;
         margin: 120px auto 120px;
+    }
+
+    
+    .rules-dialog {
+        padding: 2rem 1rem 2rem 2rem;
+        margin-top: 100px;
     }
 
     .final-round-section .RPS-lists {
@@ -922,20 +936,72 @@ path {
 }
 
 @media (min-width: 820px) {
+    footer {
+        margin-top: 150px;
+    }
+
+    .RPS-lists {
+        gap: 17.5rem;
+    }
+
+    .final-round-section .RPS-lists {
+        gap: 15rem;
+    }
+
+    .svg-container {
+        margin: 50px auto 10px;
+        gap: 2rem;
+    }
+
+    .svg-container svg {
+        transform: scale(0.8);
+    }
+
+    .start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
+        margin-left: 250px;
+    }
+
+    .start-rules-el-btn {
+        transform: translateX(250px);
+    }
+
+    .final-round-section .svg-container {
+        margin-bottom: 190px;
+    }
+
+    .play-again-btn {
+        transform: translate(330px, -320px);
+    }
+
+    .final-round-section .rules-el button {
+        transform: translateX(250px);
+        margin: 40px 5px 20px;
+    }
+}
+
+@media (min-width: 884px) {
     .svg-container {
         margin-bottom: 180px;
     }
 }
 
 @media (min-width: 1024px) {
+    .home-section {
+        padding: 0 3rem;
+    }
+
     .home-section h1 {
-        padding-top: 100px;
+        padding-top: 50px;
         font-size: 2.8rem;
     }
     
     .home-section .header-btn {
         padding: 1.5rem 4rem;
         font-size: 1.6rem;
+    }
+
+    footer {
+        margin-top: 0;
     }
     
     .message-dialog, .player-input-dialog, .thanks-message-dialog {
@@ -968,7 +1034,7 @@ path {
         margin-top: 20px;
         padding: 1rem;
         width: 60%;
-        gap: 30rem;
+        gap: 20rem;
     }
     
     .score-title {
@@ -990,16 +1056,16 @@ path {
     }
 
     .svg-img {
-        transform: scale(0.7);
+        transform: scale(0.5);
     }
 
     .start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
-        margin-left: 500px;
+        margin-left: 350px;
         padding: 1rem 1.5rem;
     }
 
     .start-rules-el-btn {
-        transform: translateX(500px);
+        transform: translateX(350px);
     }
     
     .rules-dialog h2 {
@@ -1047,7 +1113,7 @@ path {
     }
     
     .play-again-btn {
-        transform: translate(620px, -250px);
+        transform: translate(500px, -200px);
         font-size: 1.5rem;
         padding: 1rem;
         width: 20%;

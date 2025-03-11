@@ -201,8 +201,22 @@ if(svgChoices.length > 0) {
                 // Ensure all SVGs are visible in start-game.html
                 svg.style.display = "flex";
             } else {
-                // Hide unselected SVGs in final-round.html
-                if (!window.location.href.includes("start-game.html") && move !== playerMove && move !== computerMove) {
+                // Check if it's a tie
+                if (playerMove === computerMove && move === playerMove) {
+                    // Show the SVG for both player and computer
+                    svg.style.display = "flex";  
+
+                    // Clone the SVG and add it to the computer's side
+                    const clonedSvg = svg.cloneNode(true);
+                    clonedSvg.classList.add("computer-move"); // Add a class to position it differently
+                    svg.parentElement.appendChild(clonedSvg); // Append to the parent container
+                }
+                 // Show selected moves normally
+                else if (move === playerMove || move === computerMove) {
+                    svg.style.display = "flex";  
+                } 
+                // Hide unselected moves
+                else {
                     svg.style.display = "none";  
                 }
             }
@@ -357,7 +371,17 @@ const askToPlayAgain = () => {
 }
 
 // Restart game function
-const restartGame = () => location.href = 'start-game.html'
+const restartGame = () => {
+    // Remove cloned SVG from prev round
+    document.querySelectorAll('.computer-move').forEach(svg => svg.remove())
+
+    // Clear stored moves in localStorage
+    localStorage.removeItem('playerMove')
+    localStorage.removeItem('computerMove')
+
+    // Redirect back to start-game.html
+    location.href = 'start-game.html'
+}
 
 if (window.location.href.includes("start-game.html")) {
     totalScoreValue()

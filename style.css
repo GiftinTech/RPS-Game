@@ -72,7 +72,8 @@ button {
 .message-dialog h2, .player-input-dialog h2, .thanks-message-dialog h2 {
     font-size: 1.5rem;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 100px;
+    padding-bottom: 20px;
     color: var(--FC);
 }
 
@@ -108,6 +109,7 @@ footer {
     border-top: 1px solid var(--HEADER-OUTLINE);
     padding-top: 10px;
     color: var(--HEADER-OUTLINE);
+    margin-top: -60px;
 }
 
 footer a {
@@ -194,41 +196,29 @@ path {
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
-    gap: 2rem;
+    gap: 3rem;
 }
 
-/* .svg-container::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    transform: rotate(180deg);
-    margin-top: 2rem;
-    width: 50%;
-    height: 40%;
-    border: 10px solid gray;
-    border-style: groove;
-}
- */
 .svg-img {
+    width: 140px;
+    height: 140px;
     border-radius: 100%;
     background-color: var(--FC);
     cursor: pointer;
+    padding: 30px 10px 0 30px;
 }
 
-.svg-img:nth-child(1) {
-    padding: 12px 10px 0 15px;
+.svg-img:nth-child(1), .computer-move {
     box-shadow: 0 0 200px 20px var(--BTNCOLOR);
     border: 10px solid var(--BTNCOLOR);
 }
 
-.svg-img:nth-child(2) {
-    padding: 12px 10px 0 12px;
+.svg-img:nth-child(2), .computer-move {
     box-shadow: 0 0 200px 20px  #0707c5f6;
     border: 10px solid #0707c5f6;
 }
 
-.svg-img:nth-child(3) {
-   padding: 18px 10px 0 15px;
+.svg-img:nth-child(3), .computer-move {
    box-shadow: 0 0 200px 20px var(--ERRCOLOR);
    border: 10px solid var(--ERRCOLOR);
    filter: saturate(200%);
@@ -341,7 +331,8 @@ path {
     margin-left: -98px;
 }
 
-.final-round-section .svg-container {
+.final-round-section .svg-container, .computer-move {
+    display: flex;
     margin: auto 0;
 }
 
@@ -352,7 +343,7 @@ path {
 
 .winner-text {
     display: block;
-    transform: translateY(340px);
+    transform: translateY(440px);
     text-transform: uppercase;
     font-size: 1.6rem;
     font-weight: bolder;
@@ -406,18 +397,26 @@ path {
         width: 85%;
     }
 
-    footer {
-        margin-top: 80px;
-        padding-top: 20px;
+    .thanks-message-dialog h2 {
+        padding-top: 100px;
     }
 
-    .svg-container {
-        gap: 3rem;
-        margin: 100px auto 100px;
+    footer {
+        margin-top: 0;
+        padding-top: 20px;
     }
 
     .RPS-lists {
         gap: 1rem;
+    }
+
+    .rules-el {
+        margin-bottom: 20px;
+    }
+
+    .svg-container {
+        gap: 1rem;
+        margin: 120px auto 120px;
     }
 
     .final-round-section .RPS-lists {
@@ -432,24 +431,24 @@ path {
     }
 
     .final-round-section .svg-container {
-        gap: 1rem;
-        margin: 100px auto 0;
-    }
-
-    .winner-text {
-        transform: translateY(330px);
+        gap: 3rem;
+        margin: 5px auto 0;
     }
 
     .final-round-section .play-again-btn {
-        margin: 200px 0 50px;
+        margin: 150px 0 40px;
     }
 
     .final-round-section .rules-el button {
-        margin: 0 auto 20px;
+        margin: 50px auto 10px;
     }
 }
 
 @media (min-width: 375px) {
+    footer {
+        margin-top: 20px;
+    }
+
     .home-section {
         padding-top: 50px;
     }
@@ -458,19 +457,40 @@ path {
         gap: 1.5rem;
     }
 
+    .svg-container {
+        margin: 50px auto 50px;
+    }
+
     .final-round-section .RPS-lists {
         gap: 0.2rem;
         width: 350px;
     }
+
+    .final-round-section .svg-container {
+        gap: 3rem;
+        margin: 30px auto 200px;
+    }
+
+    .winner-text {
+        transform: translateY(450px);
+    }
+
+    .final-round-section .play-again-btn {
+        margin: -80px 0 20px; 
+    }
 }
 
 @media (min-width: 390px) {
+    footer {
+        margin-top: 50px;
+    }
+
     .home-section {
         padding-top: 50px;
     }
 
     .svg-container {
-        margin-bottom: 150px;
+        margin-bottom: 65px;
     }
 
     .RPS-lists {
@@ -481,6 +501,33 @@ path {
         gap: 0.2rem;
         width: 350px;
         margin-left: -5px;
+    }
+
+    .final-round-section .svg-container {
+        gap: 8rem;
+        margin-bottom: 50px;
+    }
+
+    .winner-text {
+        transform: translateY(250px);
+    }
+
+    .final-round-section .play-again-btn {
+        margin: 50px 0 50px;
+    }
+
+    .final-round-section .rules-el button {
+        margin: 0 auto 10px;
+    }
+}
+
+@media (min-width: 393px) {
+    footer {
+        margin-top: 120px;
+    }
+
+    .svg-container {
+        margin-bottom: 150px;
     }
 }
 
@@ -504,7 +551,11 @@ path {
     }
 
     .svg-container {
-        margin-bottom: 200px;
+        margin: 100px auto 175px;
+    }
+
+    .final-round-section .rules-el button {
+        margin: 140px auto 10px;
     }
 }
 
@@ -520,7 +571,7 @@ path {
 
     .svg-container {
         gap: 5rem;
-        margin: 110px auto;
+        margin: 50px auto 80px;
     }
 
     .final-round-section .RPS-lists {
@@ -534,12 +585,14 @@ path {
     }
 
     .final-round-section .svg-container {
-        gap: 5rem;
+        gap: 6rem;
         margin: 90px auto;
     }
 
     .winner-text {
-        transform: translateY(300px);
+        position: relative;
+        top: -180px;
+        left: 10px;
     }
 
     .final-round-section .play-again-btn {
@@ -550,7 +603,6 @@ path {
         margin: 0 auto 20px;
     }
 }
-
 
 @media (min-width: 768px) {
     .home-section {
@@ -575,7 +627,8 @@ path {
     
     .RPS-lists {
         width: 80%;
-        gap: 12rem;
+        height: 100%;
+        gap: 13rem;
     }
     
     .RPS-nav li {
@@ -583,25 +636,36 @@ path {
     }
     
     .score-title {
-        width: 50%;
-        font-size: 0.7rem;
+        width: 30%;
+        height: 100px;
+        font-size: 0.9rem;
     }
 
     .score-value, .player-score-value, .computer-score-value, .ties-score-value {
-        font-size: 2.7rem;
+        font-size: 4rem;
     }
     
     .wlcm-msg, .final-round-msg {
         margin-top: 10px;
         padding-top: 10px;
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
     
     .svg-container {
-        padding: 0 10rem;
+        margin: 80px auto;
+        padding: 0 2rem;
         gap: 6rem;
     }
-    
+
+    .svg-container svg {
+        width: 30%;
+        height: 30%;
+    }
+
+    .svg-img {
+        padding: 40px 0 0 50px;
+    }
+
     .start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
         margin-left: 200px;
     }
@@ -611,7 +675,9 @@ path {
     }
     
     .rules-dialog {
+        margin: 100px auto;
         padding: 2rem 3rem;
+        height: 65%;
         opacity: 1;
     }
     
@@ -624,19 +690,19 @@ path {
     
     .rules-dialog h2 {
         padding-top: 2rem;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     } 
     
     .rules-nav ul {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
     
     .rules-nav ul ul {
-        padding: 15px;
+        padding: 18px;
     }
     
     .rules-nav li {
-        padding-bottom: 8px;
+        padding-bottom: 10px;
     }
     
     .rules-el button {
@@ -645,9 +711,10 @@ path {
     
     .final-round-section .RPS-lists {
         margin: 1rem auto;
-        width: 80%;
+        width: 90%;
         height: auto;
         padding: 1.3rem 0 1.3rem 10px;
+        gap: 7rem;
     }
     
     .final-round-section .RPS-nav li {
@@ -658,42 +725,40 @@ path {
         display: flex;
         width: 100%;
         height: auto;
-        gap: 0.2rem;
-    
-        margin-left: -58px;
+        gap: 0.7rem;
     }
 
     .final-round-section .svg-container {
+        margin: 50px auto;
         padding: 3rem .5rem;
-        gap: 15rem;
+        gap: 16rem;
     }
     
     .final-round-section .svg-container svg {
         width: 24%;
         height: 24%;
-        margin-left: 2rem;
-        margin-right: 0.5rem;
     }
 
     .final-round-section .svg-img {
-        padding: 50px 0 0 50px; /* paper */
+        padding: 40px 0 0 40px;
     }
 
     .winner-text {
-        font-size: 2.1rem;
-        transform: translate(10px, 130px);
+        font-size: 2rem;
+        transform: translate(10px, 340px);
     }
     
     .play-again-btn {
         width: 25%;
         height: auto;
         padding: 0.5rem 0;
-        transform: translate(100px, -240px);
+        transform: translate(280px, -180px);
+        font-size: 1rem;
     }
     
     .final-round-section .rules-el button {
         transform: translateX(250px);
-        margin: 0 5px 20px;
+        margin: 140px 5px 20px;
     }
     
     .final-round-section .rules-el button:first-child {
@@ -701,6 +766,296 @@ path {
     }
     .final-round-section .rules-el button:last-child {
         width: 10%;
+    }
+}
+
+@media (min-width: 800px) {
+     .home-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .home-section .header-btn {
+        margin-top: 20px;
+        padding: 1rem 4rem;
+        font-size: 1.5rem;
+    }
+    
+    .message-dialog, .player-input-dialog, .thanks-message-dialog {
+        height: 30%;
+    }
+
+    .player-input-dialog input {
+        margin: 1rem 0 2rem;
+    }
+
+    .message-dialog h2, .player-input-dialog h2, .thanks-message-dialog h2 {
+        font-size: 2rem;
+    }
+
+    footer {
+        margin-top: 230px;
+        padding-top: 30px;
+        font-size: 1rem;
+    }
+    
+    .RPS-lists {
+        width: 80%;
+        height: 100%;
+        gap: 14.5rem;
+    }
+    
+    .RPS-nav li {
+        margin-left: -70px;
+    }
+    
+    .score-title {
+        width: 30%;
+        height: 100px;
+        font-size: 0.9rem;
+    }
+
+    .score-value, .player-score-value, .computer-score-value, .ties-score-value {
+        font-size: 4rem;
+    }
+    
+    .wlcm-msg, .final-round-msg {
+        margin-top: 10px;
+        padding-top: 10px;
+        font-size: 1.4rem;
+        line-height: 20px;
+    }
+    
+    .svg-container {
+        margin: 80px auto 300px;
+        padding: 0 2rem;
+        gap: 6rem;
+    }
+
+    .svg-container svg {
+        margin-left: 2rem;
+        margin-right: 0.5rem;   
+    }
+
+    .svg-img {
+        padding: 50px 0 0 50px !important;
+        /* transform: scale(1.2); */
+    }
+
+    .start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
+        margin-left: 200px;
+    }
+
+    .start-rules-el-btn {
+        transform: translateX(200px);
+    }
+    
+    .rules-dialog {
+        margin: 100px auto;
+        padding: 2rem 3rem;
+        height: 65%;
+    }
+
+    .rules-dialog h2 {
+        padding-top: 2.2rem;
+        font-size: 1.5rem;
+    } 
+    
+    .rules-nav ul {
+        font-size: 1.2rem;
+    }
+    
+    .rules-nav ul ul {
+        padding: 18px;
+    }
+    
+    .rules-nav li {
+        padding-bottom: 10px;
+    }
+    
+    .rules-el button {
+        font-size: 0.7rem;
+    }
+    
+    .final-round-section .RPS-lists {
+        margin: 1rem auto;
+        width: 90%;
+        height: auto;
+        padding: 1.3rem 0 1.3rem 10px;
+        gap: 7rem;
+    }
+    
+    .final-round-section .RPS-nav li {
+        font-size: 0.6rem;
+    }
+    
+    .final-round-score-board {
+        display: flex;
+        width: 100%;
+        height: auto;
+        gap: 0.7rem;
+    }
+
+    .final-round-section .svg-container {
+        margin: 90px auto 280px;
+        padding: 3rem .5rem;
+        gap: 19rem;
+    }
+    
+    .final-round-section .svg-img {
+        padding: 40px 0 0 40px;
+    }
+
+    .winner-text {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        transform: translate(10px, 390px);
+    }
+    
+    .play-again-btn {
+        transform: translate(310px, -390px);
+    }
+    
+    .final-round-section .rules-el button {
+        transform: translateX(250px);
+        margin: 40px 5px 20px;
+    }
+}
+
+@media (min-width: 820px) {
+    .svg-container {
+        margin-bottom: 180px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-section h1 {
+        padding-top: 100px;
+        font-size: 2.8rem;
+    }
+    
+    .home-section .header-btn {
+        padding: 1.5rem 4rem;
+        font-size: 1.6rem;
+    }
+    
+    .message-dialog, .player-input-dialog, .thanks-message-dialog {
+        margin-top: 200px;
+            max-width: 50%;
+            height: 40%;
+    }
+
+    .player-input-dialog input {
+        margin: 1.3rem 0 2.5rem;
+        height: 70px;
+    }
+
+    .player-input-dialog button {
+        font-size: 1.3rem;
+    }
+
+    .message-dialog h2, .player-input-dialog h2, .thanks-message-dialog h2 {
+        font-size: 2.3rem;
+        padding-bottom: 30px;
+    }
+
+    footer {
+        margin-top: 220px;
+        padding: 30px 40px 20px;
+        font-size: 1.2rem;
+    }
+    
+    .RPS-lists {
+        margin-top: 20px;
+        padding: 1rem;
+        width: 60%;
+        gap: 30rem;
+    }
+    
+    .score-title {
+        width: 25%;
+        font-size: 1rem;
+    }
+
+    .score-value, .player-score-value, .computer-score-value, .ties-score-value {
+        font-size: 3.5rem;
+    }
+    
+    .wlcm-msg, .final-round-msg {
+        font-size: 1.5rem;
+    }
+    
+    .svg-container {
+        margin: 50px auto;
+        gap: 2rem;
+    }
+
+    .svg-img {
+        transform: scale(0.7);
+    }
+
+    .start-rules-el-btn, .rules-el-btn, .reset-el-btn, .play-again-btn {
+        margin-left: 500px;
+        padding: 1rem 1.5rem;
+    }
+
+    .start-rules-el-btn {
+        transform: translateX(500px);
+    }
+    
+    .rules-dialog h2 {
+        font-size: 2rem;
+    } 
+    
+    .rules-nav ul {
+        font-size: 1.3rem;
+    }
+
+    .rules-dialog::after {
+        margin-left: 900px;
+    }
+    
+    .rules-el button {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    
+    .final-round-section .RPS-lists {
+        margin: 20px auto;
+        width: 70%;
+        gap: 25rem;
+    }
+
+    .score-title {
+        width: 30%;
+    }
+    
+    .final-round-section .RPS-nav li {
+        font-size: 0.7rem;
+    }
+
+    .final-round-section .svg-container {
+        margin: 0 auto;
+        gap: 25rem;
+    }
+    
+    .final-round-section .svg-img {
+        padding: 50px 0 0 50px;
+    }
+
+    .winner-text {
+        font-size: 2.4rem;
+    }
+    
+    .play-again-btn {
+        transform: translate(620px, -250px);
+        font-size: 1.5rem;
+        padding: 1rem;
+        width: 20%;
+    }
+    
+    .final-round-section .rules-el button {
+        transform: translateX(400px);
+        margin: 10px 5px 20px;
     }
 }
 

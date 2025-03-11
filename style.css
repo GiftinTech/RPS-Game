@@ -423,6 +423,7 @@ path {
     .final-round-section .RPS-lists {
         margin-top: 20px;
         width: 340px;
+        gap: 0.1rem;
     }
 
     .final-round-score-board {
@@ -440,7 +441,7 @@ path {
     }
 
     .final-round-section .play-again-btn {
-        margin: 200px 0 70px;
+        margin: 200px 0 50px;
     }
 
     .final-round-section .rules-el button {
@@ -567,14 +568,14 @@ path {
     }
     
     .message-dialog, .player-input-dialog, .thanks-message-dialog {
-        margin: 200px auto;
+        margin: 300px auto;
         width: 100%;
         opacity: 1;
     }
     
     .RPS-lists {
-        width: 60%;
-        gap: 9.5rem;
+        width: 80%;
+        gap: 12rem;
     }
     
     .RPS-nav li {
@@ -582,6 +583,7 @@ path {
     }
     
     .score-title {
+        width: 50%;
         font-size: 0.7rem;
     }
 

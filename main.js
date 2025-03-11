@@ -244,6 +244,8 @@ if(svgChoices.length > 0) {
             svg.style.pointerEvents = 'none';
         });
     }
+
+    askToPlayAgain()
  })
 
  const getPlayerChoice = () => localStorage.getItem('playerMove');

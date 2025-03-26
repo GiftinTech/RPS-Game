@@ -40,6 +40,10 @@ body {
     margin-bottom: 30px;
 }
 
+input {
+    outline: none;
+}
+
 button {
     color: var(--FC);
     margin: 0 5px;
@@ -51,6 +55,7 @@ button {
     letter-spacing: 2px;
     background-color: var(--BGCOLOR);
     transition: all .15s ease-in-out;
+    cursor: pointer;
 }
 
 .message-dialog, .player-input-dialog, .thanks-message-dialog, .reset-score-modal {

@@ -4,7 +4,6 @@ const dialog = document.querySelector('.message-dialog')
 const playBtn = document.querySelector('.play-btn')
 const secondDialog = document.querySelector('.player-input-dialog')
 const closeBtn = document.querySelector('.close-modal')
-const nextBtn = document.querySelector('.player-name-btn')
 const wlcmMsg = document.querySelector('.wlcm-msg');
 const finalRoundMsg = document.querySelector('.final-round-msg ')
 const playerNameInput = document.querySelector('.player-input-dialog input');
@@ -145,16 +144,17 @@ if (thirdDialog) {
 
 // initGame when clicking Next button functionality
 const initGame = () => {
-    if (nextBtn) {
-        nextBtn.addEventListener("click", () => {
-            const playerName = playerNameInput ? playerNameInput.value.toUpperCase().trim() || 'Player' : 'Player';
-            localStorage.setItem('playerName', playerName);
-            location.href = 'start-game.html';
-        });
-    }
+    const playerName = playerNameInput ? playerNameInput.value.toUpperCase().trim() || 'Player' : 'Player';
+    localStorage.setItem('playerName', playerName);
+    location.href = 'start-game.html';
 };
 
-initGame()
+// initGame if enter button is pressed functionality
+const handleNameKeyDown = (event) => {
+    if (event.key === 'Enter') {
+       initGame()
+    }
+}
 
 // startGame Welcome message functionality
 function renderMsg() {
@@ -225,7 +225,7 @@ if(svgChoices.length > 0) {
                     svg.style.display = "none";  
                 }
             }
-        });
+        }); 
 
        // Only evaluate if it's a new round
        if (window.location.href.includes("final-round.html") && playerMove && computerMove  && isNewRound) {

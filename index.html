@@ -27,9 +27,9 @@
         <dialog class="player-input-dialog">
             <h2>Enter player name:</h2>
             <p>
-                <input type="text" name="player-name" id="player-name" class="player-input" placeholder="Enter your name">
+                <input type="text" name="player-name" id="player-name" class="player-input" placeholder="Enter your name" onkeydown="handleNameKeyDown(event)">
             </p>
-                <button  type="button" class="second-play-btn player-name-btn">NEXT</button>
+                <button  type="button" class="second-play-btn player-name-btn" onclick="initGame()">NEXT</button>
                 <button type="button" class="second-exit-btn player-name-btn">EXIT</button>
        
         </dialog>

@@ -20,6 +20,7 @@ const thanksMessage = document.querySelector('.thanks-message-dialog')
 const thanksMessageCloseBtn = document.getElementById('second-close-modal')
 const playAgainBtn = document.querySelector('.play-again-btn')
 const totalScore = document.querySelector('.score-value')
+const currentYear = document.querySelector('.js-current-year')
 //console.log(thanksMessageCloseBtn)
 
 // Play button functionality
@@ -49,6 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
         dialog.showModal(); // Show modal
         localStorage.removeItem("showExitMessage"); // Clear flag after showing
     }
+
+    const getCurrentYear = new Date().getFullYear()
+    currentYear.textContent = getCurrentYear
 });
 
 const exitGameBtn = () => exitGame()
